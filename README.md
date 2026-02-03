@@ -79,3 +79,12 @@ InstagramやXなど既存のSNSは、他人の投稿や広告といった「外�
 * **フレームワーク：** Ruby on Rails 7.x (Ruby 3.2.x)
 * **データベース：** PostgreSQL
 * **デプロイ先：** Heroku または Render
+
+
+---
+## 画面遷移図
+### フロー図
+https://www.figma.com/design/huHXtJVYAPzblsg8kMNhNt/%E3%82%A2%E3%83%9E%E3%82%B0%E3%83%A2%E3%82%AD%E3%83%A3%E3%83%8E%E3%83%B3%E3%81%AE%E3%83%81%E3%83%BC%E3%83%A0-team-library?node-id=3311-8&t=Zsqc1eqmg47qSsYV-1
+
+### プロトタイプ
+https://www.figma.com/proto/huHXtJVYAPzblsg8kMNhNt/%E3%82%A2%E3%83%9E%E3%82%B0%E3%83%A2%E3%82%AD%E3%83%A3%E3%83%8E%E3%83%B3%E3%81%AE%E3%83%81%E3%83%BC%E3%83%A0-team-library?node-id=3311-8&t=Zsqc1eqmg47qSsYV-1
