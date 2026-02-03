@@ -98,3 +98,8 @@ https://www.figma.com/design/huHXtJVYAPzblsg8kMNhNt/%E3%82%A2%E3%83%9E%E3%82%B0%
 
 ### プロトタイプ
 https://www.figma.com/proto/huHXtJVYAPzblsg8kMNhNt/%E3%82%A2%E3%83%9E%E3%82%B0%E3%83%A2%E3%82%AD%E3%83%A3%E3%83%8E%E3%83%B3%E3%81%AE%E3%83%81%E3%83%BC%E3%83%A0-team-library?node-id=3316-2&t=Zsqc1eqmg47qSsYV-1
+
+---
+## ER図(MVP限定)
+### Gyazoリンク
+![ER図](https://i.gyazo.com/db343e6c6ac2fde45ca19359b5da5e10.png)
