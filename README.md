@@ -56,8 +56,18 @@ InstagramやXなど既存のSNSは、他人の投稿や広告といった「外�
 ### MVPリリース時（最小限のサービス検証）
 
 * **ユーザー登録・ログイン機能：** 自分だけの非公開図鑑を保持するために最低限実装。
-* **カクテル投稿機能：** 写真、カクテル名、ベース（選択式）、アルコール度数（選択式）、店名、好み度（10段階）、メモ。
-* **マイ図鑑表示・検索機能：** 「ベース別」と「アルコール度数別」の表示。
+* **カクテル投稿機能：** 
+    - 必須項目:
+        - 写真
+        - カクテル名
+        - ベース（選択式）
+        - アルコール度数（選択式）
+    - オプション項目:
+        - 店名
+        - 好み度（5段階）
+        - メモ
+* **マイ図鑑表示・検索機能：** 
+    - 登録したカクテル一覧を「ベース別」と「アルコール度数別」に表示。
 * **検証の核：** 「手動でサッと記録し、ベース別やアルコール度数別に振り返る」ことが、次の注文の質を上げるかを確認します。
 
 ### 本リリース時
@@ -82,9 +92,9 @@ InstagramやXなど既存のSNSは、他人の投稿や広告といった「外�
 
 
 ---
-## 画面遷移図
+## 画面遷移図(MVP限定)
 ### フロー図
-https://www.figma.com/design/huHXtJVYAPzblsg8kMNhNt/%E3%82%A2%E3%83%9E%E3%82%B0%E3%83%A2%E3%82%AD%E3%83%A3%E3%83%8E%E3%83%B3%E3%81%AE%E3%83%81%E3%83%BC%E3%83%A0-team-library?node-id=3311-8&t=Zsqc1eqmg47qSsYV-1
+https://www.figma.com/design/huHXtJVYAPzblsg8kMNhNt/%E3%82%A2%E3%83%9E%E3%82%B0%E3%83%A2%E3%82%AD%E3%83%A3%E3%83%8E%E3%83%B3%E3%81%AE%E3%83%81%E3%83%BC%E3%83%A0-team-library?node-id=3316-2&t=Zsqc1eqmg47qSsYV-1
 
 ### プロトタイプ
-https://www.figma.com/proto/huHXtJVYAPzblsg8kMNhNt/%E3%82%A2%E3%83%9E%E3%82%B0%E3%83%A2%E3%82%AD%E3%83%A3%E3%83%8E%E3%83%B3%E3%81%AE%E3%83%81%E3%83%BC%E3%83%A0-team-library?node-id=3311-8&t=Zsqc1eqmg47qSsYV-1
+https://www.figma.com/proto/huHXtJVYAPzblsg8kMNhNt/%E3%82%A2%E3%83%9E%E3%82%B0%E3%83%A2%E3%82%AD%E3%83%A3%E3%83%8E%E3%83%B3%E3%81%AE%E3%83%81%E3%83%BC%E3%83%A0-team-library?node-id=3316-2&t=Zsqc1eqmg47qSsYV-1
