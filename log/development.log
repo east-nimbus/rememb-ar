@@ -1,0 +1,38 @@
+  [1m[35m (238.3ms)[0m  [1m[35mCREATE DATABASE "app_development" ENCODING = 'unicode'[0m
+  [1m[35m (154.3ms)[0m  [1m[35mCREATE DATABASE "app_test" ENCODING = 'unicode'[0m
+Started GET "/" for 172.24.0.1 at 2026-02-03 05:17:14 +0000
+Cannot render console from 172.24.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (38.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.1.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.2ms | Allocations: 378)
+Completed 200 OK in 51ms (Views: 11.4ms | ActiveRecord: 0.0ms | Allocations: 7874)
+
+
+Started GET "/" for 172.24.0.1 at 2026-02-03 05:18:08 +0000
+Cannot render console from 172.24.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.1.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 261)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 873)
+
+
+Started GET "/" for 172.24.0.1 at 2026-02-03 05:19:06 +0000
+Cannot render console from 172.24.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.1.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 13)
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 190)
+
+
+Started GET "/" for 172.24.0.1 at 2026-02-03 05:19:53 +0000
+Cannot render console from 172.24.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.1.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.3ms | Allocations: 378)
+Completed 200 OK in 27ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 4252)
+
+
