@@ -14,29 +14,14 @@
         <label class="label">
           <span class="label-text text-gray-600 font-medium">Username</span>
         </label>
-        <div class="relative">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-            </svg>
-          </div>
-          <%= f.text_field :username, autofocus: true, placeholder: "Username", class: "input input-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400 pl-10" %>
-        </div>
+        <%= f.text_field :username, autofocus: true, placeholder: "Username", class: "input input-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400" %>
       </div>
 
       <div class="form-control">
         <label class="label">
           <span class="label-text text-gray-600 font-medium">Email</span>
         </label>
-        <div class="relative">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-            </svg>
-          </div>
-          <%= f.email_field :email, autocomplete: "email", placeholder: "rememb-ar@example.com", class: "input input-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400 pl-10" %>
-        </div>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "rememb-ar@example.com", class: "input input-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400" %>
       </div>
 
       <div class="form-control">
