@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  base_alcohol: 1
+  alcohol_detail: 1.5
+  alcohol_percentage: 1
+  shop_name: MyString
+  rating: 1
+  note: MyText
+  public_status: false
+  user: one
+
+two:
+  name: MyString
+  base_alcohol: 1
+  alcohol_detail: 1.5
+  alcohol_percentage: 1
+  shop_name: MyString
+  rating: 1
+  note: MyText
+  public_status: false
+  user: two
