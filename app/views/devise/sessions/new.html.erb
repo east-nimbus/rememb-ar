@@ -1,26 +1,50 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+<div class="relative bg-gray-100 w-full flex-grow py-12 flex flex-col items-center justify-center">
+  <div class="relative mb-12 flex justify-center items-center w-full">
+    <div class="absolute left-0 bg-white shadow-sm w-[66%] h-24 z-0"></div>
+    <h1 class="relative z-10 text-4xl font-light tracking-wide text-gray-800">
+      rememb-ar
+    </h1>
   </div>
+  
+  <div class="w-full max-w-md relative z-10">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4" }) do |f| %>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text text-gray-600 font-medium">Email</span>
+        </label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+          </div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "rememb-ar@example.com",       class: "input input-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <p><%= f.label :password %></p>
-    <p><%= f.password_field :password, autocomplete: "current-password" %></p>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text text-gray-600 font-medium">Password</span>
+        </label>
+        <%= f.password_field :password, autocomplete: "current-password", class: "input input-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="form-control">
+          <label class="cursor-pointer label justify-start gap-2">
+            <%= f.check_box :remember_me, class: "checkbox checkbox-sm checkbox-primary" %>
+            <span class="label-text text-gray-600">Remember me</span>
+          </label>
+        </div>
+      <% end %>
+
+      <div class="flex flex-row justify-center gap-4 mt-6">
+        <%= f.submit "ログイン", class: "btn btn-info text-white w-2/5 tracking-wider" %>
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to "新規登録", new_registration_path(resource_name), class: "btn btn-outline btn-info w-2/5 tracking-wider" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <p><%= f.check_box :remember_me %></p>
-      <p><%= f.label :remember_me %></p>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
