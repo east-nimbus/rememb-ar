@@ -14,7 +14,7 @@
     <% if user_signed_in? %>
       <%= link_to "rememb-ar", root_path, class: "btn btn-ghost text-xl" %>
     <% else %>
-      <span class="text-xl px-4 py-2 font-semibold">rememb-ar</span>
+      <%= link_to "rememb-ar", root_path, class: "btn btn-ghost text-xl" %>
     <% end %>
   </div>
   <div class="navbar-end gap-2">
