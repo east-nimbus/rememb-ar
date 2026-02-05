@@ -5,7 +5,7 @@ ja:
       user: "ユーザー"
     attributes:
       user:
-        name: "ユーザー名"
+        username: "ユーザー名"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード（確認用）"

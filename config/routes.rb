@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   root 'static_pages#top'
 
   resources :cocktails, only: [:index, :new, :create]
+  resource :profile, only: [:show]
 end
