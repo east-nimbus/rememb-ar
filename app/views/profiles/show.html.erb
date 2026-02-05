@@ -1,0 +1,32 @@
+<div class="flex-grow flex flex-col items-center justify-center py-12">
+  <div class="w-full max-w-2xl mx-auto px-4">
+    <div class="bg-white rounded-[3rem] shadow-sm p-12 border border-purple-100">
+      <div class="flex flex-col items-center gap-8">
+        <!-- Avatar Icon -->
+        <div class="w-24 h-24 rounded-full bg-purple-100 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-purple-600" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          </svg>
+        </div>
+
+        <h1 class="text-4xl font-bold text-gray-800">Myページ</h1>
+
+        <div class="w-full space-y-6">
+          <div class="border-b border-gray-100 pb-4">
+            <p class="text-sm font-medium text-gray-500 mb-1">ユーザー名</p>
+            <p class="text-2xl text-gray-800"><%= current_user.username %></p>
+          </div>
+
+          <div class="border-b border-gray-100 pb-4">
+            <p class="text-sm font-medium text-gray-500 mb-1">メールアドレス</p>
+            <p class="text-2xl text-gray-800"><%= current_user.email %></p>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <%= link_to "ホームに戻る", root_path, class: "btn btn-outline btn-info px-12" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
