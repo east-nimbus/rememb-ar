@@ -1,0 +1,146 @@
+<div class="bg-gray-100 flex-grow flex flex-col w-full">
+  <div class="max-w-4xl mx-auto px-4 pt-8 flex-grow">
+    <h1 class="text-4xl font-bold text-gray-800 mb-8 text-center md:text-left">カクテル登録</h1>
+
+    <%= form_with(model: @cocktail, local: true, class: "space-y-8") do |f| %>
+      <% if @cocktail.errors.any? %>
+        <div class="alert alert-error shadow-lg mb-6">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>入力内容にエラーがあります。</span>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Image Upload Area -->
+      <div class="flex flex-col items-center gap-4" data-controller="preview">
+        <div class="w-80 h-60 bg-gray-300 border-2 border-dashed border-gray-400 rounded-lg flex items-center justify-center overflow-hidden relative group">
+          <img data-preview-target="preview" class="hidden absolute inset-0 w-full h-full object-cover z-10" src="#" alt="Preview">
+          <span class="text-gray-600 text-xl font-medium">登録カクテル画像</span>
+        </div>
+        
+        <label class="btn btn-info btn-outline bg-cyan-50 border-cyan-200 text-gray-700 hover:bg-cyan-100 px-8 rounded-md">
+          画像アップロード
+          <%= f.file_field :image, class: "hidden", data: { preview_target: "input", action: "change->preview#preview" } %>
+        </label>
+      </div>
+
+      <!-- Form Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 mt-12">
+        <!-- Left Column -->
+        <div class="space-y-6" data-controller="tabs">
+          <div class="form-control">
+            <label class="label pb-1">
+              <span class="label-text text-xl font-medium text-gray-700">カクテル名*</span>
+            </label>
+            <%= f.text_field :name, class: "input input-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400 rounded-lg h-12", placeholder: "カクテル名を入力" %>
+          </div>
+
+          <div class="form-control">
+            <label class="label pb-1">
+              <span class="label-text text-xl font-medium text-gray-700">ベース*</span>
+            </label>
+            <%= f.select :base_alcohol, Cocktail.base_alcohols.keys.map { |k| [I18n.t("enums.cocktail.base_alcohol.#{k}"), k] }, { prompt: "ベースを選択" }, { class: "select select-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400 rounded-lg h-12" } %>
+          </div>
+
+          <div class="form-control">
+            <label class="label pb-1">
+              <span class="label-text text-xl font-medium text-gray-700">アルコール度数入力*</span>
+            </label>
+            <div class="tabs tabs-boxed bg-purple-100 mb-2">
+              <a class="tab tab-active transition-all" data-tabs-target="tab" data-tab-name="feeling" data-action="click->tabs#switch">アルコール感</a>
+              <a class="tab transition-all" data-tabs-target="tab" data-tab-name="detail" data-action="click->tabs#switch">詳細度数（%）</a>
+            </div>
+
+            <div data-tabs-target="content" data-tab-name="feeling">
+              <%= f.select :alcohol_percentage, Cocktail.alcohol_percentages.keys.map { |k| [I18n.t("enums.cocktail.alcohol_percentage.#{k}"), k] }, { prompt: "未選択" }, { class: "select select-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400 rounded-lg h-12" } %>
+            </div>
+
+            <div data-tabs-target="content" data-tab-name="detail" class="hidden space-y-4">
+              <label class="label cursor-pointer justify-start gap-4">
+                <input type="checkbox" class="checkbox checkbox-primary" data-tabs-target="nonAlcCheckbox" data-action="change->tabs#toggleNonAlc">
+                <span class="label-text text-gray-700 font-medium">ノンアルコール</span>
+              </label>
+
+              <div class="relative">
+                <%= f.number_field :alcohol_detail, step: 1, min: 0, max: 100, class: "input input-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400 rounded-lg h-12 pr-12", placeholder: "例: 15", data: { tabs_target: "detailInput", action: "change->tabs#validate" } %>
+                <span class="absolute inset-y-0 right-4 flex items-center text-gray-500 font-medium">%</span>
+              </div>
+            </div>
+
+            <!-- Error Toast -->
+            <div data-tabs-target="toastContainer" class="toast toast-top toast-center hidden z-50">
+              <div class="alert alert-error font-medium shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span data-tabs-target="toastText"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="space-y-6">
+          <div class="form-control">
+            <label class="label pb-1">
+              <span class="label-text text-xl font-medium text-gray-700">店名</span>
+            </label>
+            <%= f.text_field :shop_name, class: "input input-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400 rounded-lg h-12", placeholder: "店名を入力" %>
+          </div>
+
+          <div class="form-control" data-controller="rating">
+            <label class="label pb-1">
+              <span class="label-text text-xl font-medium text-gray-700">好み度</span>
+              <span class="text-2xl font-bold text-yellow-500" data-rating-target="display">3.0</span>
+            </label>
+            <div class="rating rating-lg rating-half flex-row-reverse justify-end">
+              <% 10.downto(1).each do |i| %>
+                <%= f.radio_button :rating, i, 
+                    class: "mask mask-star-2 #{i.even? ? 'mask-half-2' : 'mask-half-1'}", 
+                    checked: (i == 6),
+                    data: { action: "change->rating#update" } %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label class="label pb-1">
+              <span class="label-text text-xl font-medium text-gray-700">メモ</span>
+            </label>
+            <%= f.text_area :note, class: "textarea textarea-bordered w-full bg-white border-purple-200 focus:border-purple-400 focus:ring-1 focus:ring-purple-400 rounded-lg h-24", placeholder: "メモを入力" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col items-center gap-4 mt-12 pb-16">
+        <%= f.submit "カクテル登録", class: "btn bg-yellow-200 hover:bg-yellow-300 text-gray-800 border-none px-20 py-3 h-auto text-2xl rounded-lg shadow-sm w-full max-w-md" %>
+        
+        <%= link_to root_path, class: "btn bg-gray-300 hover:bg-gray-400 text-gray-800 border-none px-12 py-2 h-auto text-2xl rounded-full shadow-sm" do %>
+          キャンセル
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <%= link_to cocktails_path, class: "w-full bg-purple-200 hover:bg-purple-300 text-gray-800 py-4 text-center text-2xl font-bold shadow-[0_-2px_10px_rgba(0,0,0,0.05)] transition-colors duration-200" do %>
+    カクテル一覧
+  <% end %>
+</div>
+
+<style>
+  /* 全ての星に共通の基盤スタイル */
+  .rating input {
+    background-color: #9ca3af; /* デフォルトはグレー */
+    opacity: 1 !important; /* 透明度を無効化して明るさを統一 */
+  }
+
+  /* 選択された星とその左側（DOM上では後続）を黄色にする */
+  .rating input:checked,
+  .rating input:hover,
+  .rating input:checked ~ input,
+  .rating input:hover ~ input {
+    background-color: #facc15 !important; /* yellow-400 */
+    opacity: 1 !important;
+  }
+</style>
