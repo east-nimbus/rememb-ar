@@ -6,6 +6,8 @@ import { application } from "./application"
 import PreviewController from "./preview_controller"
 import TabsController from "./tabs_controller"
 import RatingController from "./rating_controller"
+import IndexTabsController from "./index_tabs_controller"
 application.register("preview", PreviewController)
 application.register("tabs", TabsController)
 application.register("rating", RatingController)
+application.register("index-tabs", IndexTabsController)

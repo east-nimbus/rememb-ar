@@ -1,47 +1,74 @@
-<div class="bg-gray-100 min-h-screen pb-12">
-  <div class="max-w-6xl mx-auto px-4 pt-8">
+<div class="bg-gray-100 min-h-full pb-12" data-controller="index-tabs">
+  <div class="max-w-screen-2xl mx-auto px-8 pt-8">
     <div class="flex justify-between items-center mb-8">
       <h1 class="text-4xl font-bold text-gray-800">登録カクテル一覧</h1>
       <%= link_to "カクテル登録", new_cocktail_path, class: "btn btn-info text-white" %>
     </div>
 
-    <% if @cocktails.any? %>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <% @cocktails.each do |cocktail| %>
-          <div class="card bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300">
-            <% if cocktail.image.attached? %>
-              <figure><%= image_tag cocktail.image, class: "h-64 w-full object-cover" %></figure>
-            <% else %>
-              <div class="h-64 w-full bg-gray-200 flex items-center justify-center text-gray-400">画像なし</div>
-            <% end %>
-            <div class="card-body">
-              <h2 class="card-title text-2xl"><%= cocktail.name %></h2>
-              <div class="flex gap-2 mb-2">
-                <span class="badge badge-outline"><%= cocktail.base_alcohol&.humanize %></span>
-                <span class="badge badge-primary badge-outline">度数: <%= cocktail.alcohol_percentage&.humanize %></span>
-              </div>
-              <p class="text-gray-600 line-clamp-2"><%= cocktail.note %></p>
-              <div class="flex items-center gap-2 mb-4">
-                <div class="rating rating-sm rating-half flex-row-reverse justify-end pointer-events-none">
-                  <% 10.downto(1).each do |i| %>
-                    <input type="radio" class="mask mask-star-2 <%= i.even? ? 'mask-half-2' : 'mask-half-1' %>" disabled <%= 'checked' if i == cocktail.rating %> />
-                  <% end %>
-                </div>
-                <span class="text-lg font-bold text-yellow-500">(<%= (cocktail.rating.to_f / 2).to_s %>)</span>
-              </div>
-              <div class="card-actions justify-end mt-4">
-                <button class="btn btn-ghost btn-sm">詳細</button>
-              </div>
+    <!-- カクテル数表示とタブボタン -->
+    <div class="flex flex-wrap items-center gap-4 mb-8">
+      <div class="bg-cyan-50 border border-cyan-200 text-cyan-800 px-4 py-2 rounded-md font-medium">
+        登録カクテル数: <%= @cocktails_count %>
+      </div>
+
+      <button data-index-tabs-target="baseTab" data-action="click->index-tabs#showBase" class="flex items-center gap-2 px-6 py-2 rounded-full font-bold transition-all shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+        </svg>
+        ベース順
+      </button>
+
+      <button data-index-tabs-target="alcoholTab" data-action="click->index-tabs#showAlcohol" class="flex items-center gap-2 px-8 py-2 rounded-full font-bold transition-all shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+        </svg>
+        アルコール度数順
+      </button>
+    </div>
+
+    <!-- ベース別コンテンツ -->
+    <div data-index-tabs-target="baseContent" class="space-y-12">
+      <% if @cocktails_by_base.any? %>
+        <% @cocktails_by_base.each do |base, cocktails| %>
+          <div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-8 border-gray-400 pl-4">
+              <%= I18n.t("enums.cocktail.base_alcohol.#{base}") %>ベース
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
+              <% cocktails.each do |cocktail| %>
+                <%= render 'cocktail_card', cocktail: cocktail %>
+              <% end %>
             </div>
           </div>
         <% end %>
-      </div>
-    <% else %>
-      <div class="text-center py-20">
-        <p class="text-2xl text-gray-500 mb-8">まだカクテルが登録されていません。</p>
-        <%= link_to "最初のカクテルを登録する", new_cocktail_path, class: "btn btn-info btn-lg text-white" %>
-      </div>
-    <% end %>
+      <% else %>
+        <div class="max-w-4xl mx-auto">
+          <%= render 'no_cocktails' %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- 度数別コンテンツ -->
+    <div data-index-tabs-target="alcoholContent" class="space-y-12 hidden">
+      <% if @cocktails_by_abc.any? %>
+        <% @cocktails_by_abc.each do |degree, cocktails| %>
+          <div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-8 border-gray-400 pl-4">
+              <%= degree %>度〜
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
+              <% cocktails.each do |cocktail| %>
+                <%= render 'cocktail_card', cocktail: cocktail %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="max-w-4xl mx-auto">
+          <%= render 'no_cocktails' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 

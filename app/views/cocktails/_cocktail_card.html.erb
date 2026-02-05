@@ -1,0 +1,22 @@
+<div class="card bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
+  <% if cocktail.image.attached? %>
+    <figure><%= image_tag cocktail.image, class: "h-48 w-full object-cover" %></figure>
+  <% else %>
+    <div class="h-48 w-full bg-gray-200 flex items-center justify-center text-gray-400">画像なし</div>
+  <% end %>
+  <div class="p-4">
+    <h3 class="text-xl font-bold mb-2 truncate"><%= cocktail.name %></h3>
+    <div class="flex items-center gap-1 mb-3">
+      <div class="rating rating-xs rating-half flex-row-reverse justify-end pointer-events-none">
+        <% 10.downto(1).each do |i| %>
+          <input type="radio" class="mask mask-star-2 <%= i.even? ? 'mask-half-2' : 'mask-half-1' %>" disabled <%= 'checked' if i == cocktail.rating %> />
+        <% end %>
+      </div>
+      <span class="text-sm font-bold text-yellow-500">(<%= (cocktail.rating.to_f / 2).to_s %>)</span>
+    </div>
+    <div class="flex flex-wrap gap-1">
+      <span class="badge badge-sm badge-outline"><%= I18n.t("enums.cocktail.base_alcohol.#{cocktail.base_alcohol}") %></span>
+      <span class="badge badge-sm badge-info badge-outline"><%= cocktail.display_alcohol_degree.to_i %>%</span>
+    </div>
+  </div>
+</div>
