@@ -24,8 +24,8 @@ ja:
         wine: "ワイン"
         other: "その他"
       alcohol_percentage:
-        non_alc: "ノンアルコール"
-        low: "弱い"
-        medium: "普通"
-        high: "強い"
-        strong: "かなり強い"
+        non_alc: "ノンアルコール (0%)"
+        low: "弱い (5%くらい)"
+        medium: "普通 (12%くらい)"
+        high: "強い (18%くらい)"
+        strong: "かなり強い (28%くらい)"
