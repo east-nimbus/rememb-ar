@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      cocktail: "カクテル"
+    attributes:
+      cocktail:
+        name: "カクテル名"
+        base_alcohol: "ベース"
+        alcohol_percentage: "アルコール感"
+        alcohol_detail: "アルコール度数"
+        shop_name: "店名"
+        rating: "好み度"
+        note: "メモ"
+  enums:
+    cocktail:
+      base_alcohol:
+        gin: "ジン"
+        vodka: "ウォッカ"
+        rum: "ラム"
+        tequila: "テキーラ"
+        whiskey: "ウィスキー"
+        brandy: "ブランデー"
+        liqueur: "リキュール"
+        wine: "ワイン"
+        other: "その他"
+      alcohol_percentage:
+        non_alc: "ノンアルコール"
+        low: "弱い"
+        medium: "普通"
+        high: "強い"
+        strong: "かなり強い"

@@ -4,7 +4,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         <!-- カクテル登録 (Large left button) -->
         <div class="md:row-span-2">
-          <%= link_to "#", class: "group relative flex flex-col items-center justify-center p-12 bg-purple-200 rounded-[3rem] shadow-sm hover:shadow-md transition-all duration-300 h-full border border-purple-200" do %>
+          <%= link_to new_cocktail_path, class: "group relative flex flex-col items-center justify-center p-12 bg-purple-200 rounded-[3rem] shadow-sm hover:shadow-md transition-all duration-300 h-full border border-purple-200" do %>
             <div class="flex items-center gap-4">
               <div class="w-12 h-12 rounded-full border-2 border-gray-600 flex items-center justify-center group-hover:bg-purple-200 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
@@ -18,7 +18,7 @@
 
         <!-- 登録カクテル一覧 (Top right button) -->
         <div>
-          <%= link_to "#", class: "group relative flex items-center justify-center p-8 bg-purple-200 rounded-[2.5rem] shadow-sm hover:shadow-md transition-all duration-300 border border-purple-200" do %>
+          <%= link_to cocktails_path, class: "group relative flex items-center justify-center p-8 bg-purple-200 rounded-[2.5rem] shadow-sm hover:shadow-md transition-all duration-300 border border-purple-200" do %>
             <div class="flex items-center gap-4">
               <div class="w-10 h-10 rounded-full border-2 border-gray-600 flex items-center justify-center group-hover:bg-purple-200 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
